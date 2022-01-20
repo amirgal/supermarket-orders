@@ -8,7 +8,10 @@ const NewOrderBar = (props) => {
       }
     
     const createNewOrder = () => {
-        props.createNewOrder(input)
+        props.createNewOrder({
+            id: Math.floor(Math.random() * 10000),
+            email: input
+        })
         setInput('')
     }
 

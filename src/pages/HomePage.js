@@ -7,7 +7,11 @@ const HomePage = ({orders, deleteOrder, editOrder, createNewOrder}) => {
     return (
         <div className='home-page'>
             <NewOrderBar createNewOrder={createNewOrder}/>
-            <OrdersList orders={orders} deleteOrder={deleteOrder} editOrder={editOrder}/>
+            <OrdersList 
+                orders={orders} 
+                deleteOrder={deleteOrder} 
+                editOrder={editOrder}
+            />
         </div>
     )
 }
