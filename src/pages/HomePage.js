@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import NewOrderBar from '../components/NewOrderBar';
+import OrdersList from '../components/OrdersList';
 
-const HomePage = (props) => {
+const HomePage = ({orders,deleteOrder}) => {
     
     return (
-        <div>
+        <div className='home-page'>
             <NewOrderBar/>
+            <OrdersList orders={orders} deleteOrder={deleteOrder}/>
         </div>
     )
 }

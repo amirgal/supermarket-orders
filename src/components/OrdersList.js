@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import OrderItem from './OrderItem';
 
-const OrdersList = (props) => {
+const OrdersList = ({orders,deleteOrder}) => {
     
     return (
-        <div><OrderItem /></div>
+        <div className='orders-block'>
+            {orders.map(o => 
+                <OrderItem key={o.id} order={o} deleteOrder={deleteOrder}/>
+            )}
+        </div>
     )
 }
 

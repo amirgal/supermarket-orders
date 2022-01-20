@@ -8,7 +8,7 @@ const NewOrderBar = (props) => {
       }
     
     const submit = () => {
-        // console.log(input)  redirect to orderPage with the input
+        // console.log(input)  redirect to orderPage with empty order
     }
 
     return (
