@@ -8,10 +8,13 @@
 }
 
 .orders-block {
-  height: max-content;
-  width: max-content;
+ 
 }
 
-.orders-row {
-  grid-template-columns: repeat(1,4);
+.order-row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  justify-items: center;
+  margin: 10px 0;
+  border-bottom: 1px solid black;
 }

@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
+import OrderInfo from '../components/OrderInfo';
+import ProductsList from '../components/ProductsList';
 
-const OrderPage = (props) => {
+const OrderPage = ({products}) => {
     
     return (
-        <div>Order Page</div>
+        <div className='order-page'>    
+            <OrderInfo/>
+            <ProductsList products={products}/>
+        </div>
     )
 }
 
