@@ -7,8 +7,9 @@ const NewOrderBar = (props) => {
         setInput(e.target.value)
       }
     
-    const submit = () => {
-        // console.log(input)  redirect to orderPage with empty order
+    const createNewOrder = () => {
+        props.createNewOrder(input)
+        setInput('')
     }
 
     return (
@@ -20,7 +21,7 @@ const NewOrderBar = (props) => {
                 className='new-order-input'
                 value={input}
             />
-            <button className='new-order-button' onClick={submit}>Create New Order</button>
+            <button className='new-order-button' onClick={createNewOrder}>Create New Order</button>
         </div>
     )
 }
