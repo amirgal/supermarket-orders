@@ -38,6 +38,18 @@ const App = () => {
     navigate(orderPagePath,{state: order})
   })
 
+  const updateOrder = useCallback((order) => {
+    const orderIndex = orders.findIndex(o => o.id == order.id)
+
+    if(orderIndex == -1){
+      setOrders([...orders, order])
+    }else{
+      const updatedOrders = orders
+      updatedOrders[orderIndex] = order
+    }
+    navigate('/')
+  })
+
 
   return (
     <div className="App">
@@ -54,6 +66,7 @@ const App = () => {
           <Route path='/order-page' exact element={
             <OrderPage 
               products={products} 
+              updateOrder={updateOrder}
             /> 
           }></Route>
 

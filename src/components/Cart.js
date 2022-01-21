@@ -1,7 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-const Cart = ({cart, totalPrice, removeFromCart}) => {
+const Cart = ({cart, totalPrice, removeFromCart, saveOrder}) => {
     
     return (
         <div className='cart-block'>
@@ -10,6 +10,7 @@ const Cart = ({cart, totalPrice, removeFromCart}) => {
                 <CartItem key={item.product.id} cartItem={item} removeFromCart={removeFromCart}/>
             )}
             Total Price: {totalPrice}
+            <button onClick={() => saveOrder()}>Save Order</button>
         </div>
     )
 }

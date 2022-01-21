@@ -4,9 +4,9 @@ import OrderInfo from '../components/OrderInfo';
 import ProductsList from '../components/ProductsList';
 import Cart from '../components/Cart';
 
-const OrderPage = ({products}) => {
+const OrderPage = ({products, updateOrder}) => {
     const location = useLocation()
-    const currentOrder = location.state
+    const [currentOrder, setCurrentOrder] = useState(location.state)
     const [totalPrice, setTotalPrice] = useState(currentOrder.totalPrice)
     const [cart, setCart] = useState(currentOrder.cart)
 
@@ -22,7 +22,6 @@ const OrderPage = ({products}) => {
             cart[productIndex].qty++
             setTotalPrice(totalPrice + product.price)
         }
-        console.log(cart)
     }
 
     const removeFromCart = (productId) => {
@@ -40,14 +39,18 @@ const OrderPage = ({products}) => {
     }
 
     const saveOrder = () => {
-
+        const order = currentOrder
+        order.cart = cart
+        order.totalPrice = totalPrice
+        setCurrentOrder(order)
+        updateOrder(currentOrder)
     }
 
     return (
         <div className='order-page'>    
             {/* <OrderInfo/> */}
             <ProductsList products={products} addToCart={addToCart}/>
-            <Cart cart={cart} totalPrice={totalPrice} removeFromCart={removeFromCart}/>
+            <Cart cart={cart} totalPrice={totalPrice} removeFromCart={removeFromCart} saveOrder={saveOrder}/>
         </div>
     )
 }
