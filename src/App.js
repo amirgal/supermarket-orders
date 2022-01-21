@@ -1,19 +1,19 @@
-import React, {useState, Component, Fragment } from 'react';
+import React, {useState, Component, Fragment, useCallback } from 'react';
 import './App.css';
 import {Routes, Route , useNavigate} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import OrderPage from './pages/OrderPage';
-const axios = require('axios');
 
 
-const App = (props) => {
+const App = () => {
   
   const navigate = useNavigate()
+  const orderPagePath = '/order-page'
   const [orders, setOrders] = useState(
     [
-      {id:"1dadf",clientEmail:"aaa@gmail.com", totalPrice:"234"},
-      {id:"g4gf",clientEmail:"bbb@gmail.com", totalPrice:"4235"},
-      {id:"65hds",clientEmail:"ccc@gmail.com", totalPrice:"4444"}
+      {id:"1dadf",clientEmail:"aaa@gmail.com", totalPrice:0, cart: []},
+      {id:"g4gf",clientEmail:"bbb@gmail.com", totalPrice:0, cart: []},
+      {id:"65hds",clientEmail:"ccc@gmail.com", totalPrice:0, cart: []}
     ],
   )
 
@@ -25,34 +25,36 @@ const App = (props) => {
       {id:"gf43j6", productName:"keyboard", price:300, img:'https://media.istockphoto.com/photos/red-apple-with-leaf-isolated-on-white-background-picture-id185262648'}
     ]
   
-  const createNewOrder = (newOrderDetails) => {
-    navigate('/order-page')
-    console.log(newOrderDetails)
-  }
+  const createNewOrder = useCallback((order) => {
+    navigate(orderPagePath,{state: order})
+  })
 
-  const deleteOrder =  (orderId) => {
+  const deleteOrder =  useCallback((orderId) => {
     setOrders(orders.filter(t => t.id !== orderId))
-  }
+  })
 
-  const editOrder = (orderId) => {  
-    //redirect to order page with this order id
-    console.log(orderId + "edit this order")
-  }
+  const editOrder = useCallback((orderId) => {  
+    const order = orders.find(o => o.id === orderId)
+    navigate(orderPagePath,{state: order})
+  })
+
 
   return (
     <div className="App">
         <Routes>
           <Route path="/" exact element={
             <HomePage 
-            orders={orders} 
-            deleteOrder={deleteOrder} 
-            editOrder={editOrder} 
-            createNewOrder={createNewOrder}
+              orders={orders} 
+              deleteOrder={deleteOrder} 
+              editOrder={editOrder} 
+              createNewOrder={createNewOrder}
             />
           }></Route>
 
           <Route path='/order-page' exact element={
-            <OrderPage products={products}/> 
+            <OrderPage 
+              products={products} 
+            /> 
           }></Route>
 
         </Routes>

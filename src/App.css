@@ -18,3 +18,11 @@
   margin: 10px 0;
   border-bottom: 1px solid black;
 }
+
+.product-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-items: center;
+  margin: 10px 0;
+  border-bottom: 1px solid black;
+}
