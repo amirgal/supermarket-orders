@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import NewOrderBar from '../components/NewOrderBar';
 import OrdersList from '../components/OrdersList';
 
