@@ -25,6 +25,20 @@ const OrderPage = ({products}) => {
         console.log(cart)
     }
 
+    const removeFromCart = (productId) => {
+        const productIndex = cart.findIndex(p => p.product.id == productId)
+        const product = products.find(p => p.id == productId)
+
+        if(cart[productIndex].qty > 1) {
+            cart[productIndex].qty--
+            setTotalPrice(totalPrice - product.price)
+        }else{
+            const newCart = cart.filter(i => i.product.id !== productId)
+            setCart(newCart)
+            setTotalPrice(totalPrice - product.price)
+        }
+    }
+
     const saveOrder = () => {
 
     }
@@ -33,7 +47,7 @@ const OrderPage = ({products}) => {
         <div className='order-page'>    
             {/* <OrderInfo/> */}
             <ProductsList products={products} addToCart={addToCart}/>
-            <Cart cart={cart}/>
+            <Cart cart={cart} totalPrice={totalPrice} removeFromCart={removeFromCart}/>
         </div>
     )
 }
