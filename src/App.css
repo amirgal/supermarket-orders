@@ -7,8 +7,10 @@
   width: 5%;
 }
 
-.orders-block {
- 
+.order-page {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  justify-items: center;
 }
 
 .order-row {
