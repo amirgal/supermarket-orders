@@ -1,54 +1,53 @@
-import React, {useState, useCallback } from 'react';
+import React, {useState, useEffect } from 'react';
 import './App.css';
 import {Routes, Route , useNavigate} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import OrderPage from './pages/OrderPage';
-
+const axios = require('axios');
 
 const App = () => {
   
   const navigate = useNavigate()
   const orderPagePath = '/order-page'
-  const [orders, setOrders] = useState(
-    [
-      {id:"1dadf",clientEmail:"aaa@gmail.com", totalPrice:0, cart: []},
-      {id:"g4gf",clientEmail:"bbb@gmail.com", totalPrice:0, cart: []},
-      {id:"65hds",clientEmail:"ccc@gmail.com", totalPrice:0, cart: []}
-    ],
-  )
+  const [orders, setOrders] = useState([])
+  const [products,setProducts] = useState([])
 
-  const products =
-    [
-      {id:"42fsd", productName:"computer", price:4050, img:'https://media.istockphoto.com/photos/red-apple-with-leaf-isolated-on-white-background-picture-id185262648'},
-      {id:"53gdf", productName:"car", price:30000, img:'https://media.istockphoto.com/photos/red-apple-with-leaf-isolated-on-white-background-picture-id185262648'},
-      {id:"gd34h5", productName:"chair", price:433, img:'https://media.istockphoto.com/photos/red-apple-with-leaf-isolated-on-white-background-picture-id185262648'},
-      {id:"gf43j6", productName:"keyboard", price:300, img:'https://media.istockphoto.com/photos/red-apple-with-leaf-isolated-on-white-background-picture-id185262648'}
-    ]
+  const getProducts = async () => {
+    const productsData = await axios.get('http://localhost:4000/products')
+    setProducts(productsData.data)
+    console.log(products)
+  }
+
+  useEffect(()=>{
+    getProducts()
+  },[])
+
   
-  const createNewOrder = useCallback((order) => {
+  const createNewOrder = (order) => {
     navigate(orderPagePath,{state: order})
-  })
+  }
 
-  const deleteOrder =  useCallback((orderId) => {
+  const deleteOrder =  (orderId) => {
     setOrders(orders.filter(t => t.id !== orderId))
-  })
+  }
 
-  const editOrder = useCallback((orderId) => {  
+  const editOrder = (orderId) => {  
     const order = orders.find(o => o.id === orderId)
     navigate(orderPagePath,{state: order})
-  })
+  }
 
-  const updateOrder = useCallback((order) => {
-    const orderIndex = orders.findIndex(o => o.id == order.id)
+  const updateOrder = (order) => {
+    const orderIndex = orders.findIndex(o => o.id === order.id)
 
-    if(orderIndex == -1){
+    if(orderIndex === -1){
       setOrders([...orders, order])
     }else{
       const updatedOrders = orders
       updatedOrders[orderIndex] = order
     }
     navigate('/')
-  })
+    console.log(order)
+  }
 
 
   return (

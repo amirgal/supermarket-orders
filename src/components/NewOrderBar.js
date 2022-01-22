@@ -8,7 +8,7 @@ const NewOrderBar = (props) => {
       }
     
     const createNewOrder = () => {
-        if(input != ''){
+        if(input !== ''){
             props.createNewOrder({
                 id: Math.floor(Math.random() * 10000),
                 clientEmail: input,

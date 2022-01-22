@@ -5,9 +5,9 @@ const CartItem = ({cartItem, removeFromCart}) => {
     
     return (
         <div className='cart-item-row'>
-            <div>{product.productName}</div>
+            <div>{product.p_name}</div>
             <div>x {cartItem.qty}</div>
-            <button onClick={() => removeFromCart(product.id)}>Remove</button>
+            <button onClick={() => removeFromCart(product.p_id)}>Remove</button>
         </div>
     )
 }

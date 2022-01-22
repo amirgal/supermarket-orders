@@ -7,7 +7,7 @@ const Cart = ({cart, totalPrice, removeFromCart, saveOrder}) => {
         <div className='cart-block'>
             Cart
             {cart.map(item => 
-                <CartItem key={item.product.id} cartItem={item} removeFromCart={removeFromCart}/>
+                <CartItem key={item.product.p_id} cartItem={item} removeFromCart={removeFromCart}/>
             )}
             Total Price: {totalPrice}
             <button onClick={() => saveOrder()}>Save Order</button>
