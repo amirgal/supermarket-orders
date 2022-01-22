@@ -17,14 +17,14 @@ const App = () => {
     setProducts(productsData.data)
   }
 
-  // const getOrders = async () => {
-  //   const ordersData = await axios.get('http://localhost:4000/orders')
-  //   setOrders(ordersData.data)
-  // }
+  const getOrders = async () => {
+    const ordersData = await axios.get('http://localhost:4000/orders')
+    setOrders(ordersData.data)
+  }
 
   useEffect(()=>{
     getProducts()
-    // getOrders()
+    getOrders()
   },[])
 
   
@@ -33,16 +33,16 @@ const App = () => {
   }
 
   const deleteOrder =  (orderId) => {
-    setOrders(orders.filter(t => t.id !== orderId))
+    setOrders(orders.filter(t => t.o_id !== orderId))
   }
 
   const editOrder = (orderId) => {  
-    const order = orders.find(o => o.id === orderId)
+    const order = orders.find(o => o.o_id === orderId)
     navigate(orderPagePath,{state: order})
   }
 
   const updateOrder = (order) => {
-    const orderIndex = orders.findIndex(o => o.id === order.id)
+    const orderIndex = orders.findIndex(o => o.o_id === order.o_id)
 
     if(orderIndex === -1){
       setOrders([...orders, order])

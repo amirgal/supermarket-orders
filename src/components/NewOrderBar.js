@@ -10,9 +10,9 @@ const NewOrderBar = (props) => {
     const createNewOrder = () => {
         if(input !== ''){
             props.createNewOrder({
-                id: Math.floor(Math.random() * 10000),
-                clientEmail: input,
-                totalPrice:0,
+                o_id: Math.floor(Math.random() * 10000),
+                email: input,
+                total_price:0,
                 cart: []
             })
             setInput('')

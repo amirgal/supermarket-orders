@@ -28,7 +28,7 @@ router.get('/orders', async (req,res) => {
       const order = newOrders[i];
       order.cart = await loadOrderCart(order.o_id)
     }
-    console.log(newOrders)
+    res.json(newOrders)
   } catch (err) {
     console.error(err.message)
   } 
@@ -37,10 +37,10 @@ router.get('/orders', async (req,res) => {
 router.post('/order', async (req,res) => {
   try {
     const order = req.body
-    const query1 = `INSERT INTO orders VALUES ('${order.id}', '${order.clientEmail}','${order.totalPrice}')`
+    const query1 = `INSERT INTO orders VALUES ('${order.o_id}', '${order.email}','${order.total_price}')`
     pool.query(query1)
     order.cart.forEach(p_obj => { 
-      const query1 = `INSERT INTO cart_items VALUES ('${order.id}', '${p_obj.product.p_id}','${p_obj.qty}')`
+      const query1 = `INSERT INTO cart_items VALUES ('${order.o_id}', '${p_obj.product.p_id}','${p_obj.qty}')`
     pool.query(query1)
     res.end()
     });

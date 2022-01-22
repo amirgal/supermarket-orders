@@ -7,7 +7,7 @@ import Cart from '../components/Cart';
 const OrderPage = ({products, updateOrder}) => {
     const location = useLocation()
     const [currentOrder, setCurrentOrder] = useState(location.state)
-    const [totalPrice, setTotalPrice] = useState(currentOrder.totalPrice)
+    const [totalPrice, setTotalPrice] = useState(currentOrder.total_price)
     const [cart, setCart] = useState(currentOrder.cart)
 
     const addToCart = (productId) => {
@@ -41,7 +41,7 @@ const OrderPage = ({products, updateOrder}) => {
     const saveOrder = () => {
         const order = currentOrder
         order.cart = cart
-        order.totalPrice = totalPrice
+        order.total_price = totalPrice
         setCurrentOrder(order)
         updateOrder(currentOrder)
     }

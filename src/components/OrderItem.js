@@ -4,10 +4,10 @@ const OrderItem = ({order, deleteOrder, editOrder}) => {
 
     return (
         <div className='order-row'>
-            <div className='order-email'>{order.clientEmail}</div>
-            <div className='order-price'>{order.totalPrice}</div>
-            <button className='edit-order-button' onClick={() => editOrder(order.id)}>Edit</button> 
-            <button className='delete-order-button' onClick={() => deleteOrder(order.id)}>Delete</button>
+            <div className='order-email'>{order.email}</div>
+            <div className='order-price'>{order.total_price}</div>
+            <button className='edit-order-button' onClick={() => editOrder(order.o_id)}>Edit</button> 
+            <button className='delete-order-button' onClick={() => deleteOrder(order.o_id)}>Delete</button>
         </div>
     )
 }
