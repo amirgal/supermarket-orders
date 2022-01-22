@@ -17,8 +17,14 @@ const App = () => {
     setProducts(productsData.data)
   }
 
+  // const getOrders = async () => {
+  //   const ordersData = await axios.get('http://localhost:4000/orders')
+  //   setOrders(ordersData.data)
+  // }
+
   useEffect(()=>{
     getProducts()
+    // getOrders()
   },[])
 
   
