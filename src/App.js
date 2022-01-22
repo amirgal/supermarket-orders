@@ -15,7 +15,6 @@ const App = () => {
   const getProducts = async () => {
     const productsData = await axios.get('http://localhost:4000/products')
     setProducts(productsData.data)
-    console.log(products)
   }
 
   useEffect(()=>{
@@ -41,12 +40,13 @@ const App = () => {
 
     if(orderIndex === -1){
       setOrders([...orders, order])
+      axios.post('http://localhost:4000/order', order)
     }else{
       const updatedOrders = orders
       updatedOrders[orderIndex] = order
+      //put to server
     }
     navigate('/')
-    console.log(order)
   }
 
 
