@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button, TextField} from '@mui/material';
 
 const NewOrderBar = (props) => {
     var [input,setInput] = useState('')
@@ -21,14 +22,22 @@ const NewOrderBar = (props) => {
 
     return (
         <div className='new-order-bar'>
-            <input
+            {/* <input
                 onChange={handleInput}
                 type="text" 
                 placeholder='Enter Clients Email'
-                className='new-order-input'
+                value={input}
+            /> */}
+            <TextField id="email-input" 
+                required 
+                label="Required"
+                placeholder='Enter Clients Email'
+                onChange={handleInput}
                 value={input}
             />
-            <button className='new-order-button' onClick={createNewOrder}>Create New Order</button>
+            <Button className='new-order-button'  variant='contained' onClick={createNewOrder}>
+                Create New Order
+            </Button>
         </div>
     )
 }

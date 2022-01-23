@@ -1,7 +1,18 @@
-.App {
-  text-align: center;
+#root {
+  background-color: #d3d3d340;
+  height: 100vh;
 }
 
+.App {
+  text-align: center;
+  padding: 2%;
+}
+
+.new-order-bar {
+  display: flex;
+  margin-bottom: 3%;
+  justify-content: center;
+}
 .product-img {
   height: 5%;
   width: 5%;
