@@ -50,7 +50,7 @@ const App = () => {
     }else{
       const updatedOrders = orders
       updatedOrders[orderIndex] = order
-      //put to server
+      axios.put('http://localhost:4000/order', order)
     }
     navigate('/')
   }

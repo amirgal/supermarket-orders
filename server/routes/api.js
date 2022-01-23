@@ -42,11 +42,28 @@ router.post('/order', async (req,res) => {
     order.cart.forEach(p_obj => { 
       const query1 = `INSERT INTO cart_items VALUES ('${order.o_id}', '${p_obj.p_id}','${p_obj.qty}')`
     pool.query(query1)
-    res.end()
     });
+  res.end()
   } catch (err) {
     console.error(err.message)
   } 
 }) 
+
+router.put('/order', async (req,res) => {
+  try {
+    const order = req.body
+    const query1 = `UPDATE orders SET total_price = ${order.total_price} WHERE o_id = ${order.o_id};`
+    pool.query(query1)
+    const query2 = `DELETE FROM cart_items WHERE o_id = ${order.o_id};`
+    await pool.query(query2)
+    order.cart.forEach(p_obj => { 
+      const query = `INSERT INTO cart_items VALUES ('${order.o_id}', '${p_obj.p_id}','${p_obj.qty}')`
+    pool.query(query)
+    });
+  res.end()
+  } catch (err) {
+    console.error(err.message)
+  } 
+})
 
 module.exports = router
