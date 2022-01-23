@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import  {useLocation} from 'react-router-dom';
-import OrderInfo from '../components/OrderInfo';
 import ProductsList from '../components/ProductsList';
 import Cart from '../components/Cart';
 
@@ -54,7 +53,6 @@ const OrderPage = ({products, updateOrder}) => {
 
     return (
         <div className='order-page'>    
-            {/* <OrderInfo/> */}
             <ProductsList products={products} addToCart={addToCart}/>
             <Cart cart={cart} totalPrice={totalPrice} removeFromCart={removeFromCart} saveOrder={saveOrder}/>
         </div>

@@ -1,13 +1,19 @@
 import React from 'react';
+import {Paper, Button} from '@mui/material';
 
 const ProductItem = ({product, addToCart}) => {
     
     return (
-        <div className='product-row'>
-            <div className='product-name'>{product.p_name}</div>
-            <div className='product-price'>{product.price}</div>
-            <button onClick={() => addToCart(product.p_id)}>Add to Cart</button>
-        </div>
+            <Paper className='product-row'>
+                <p className='product-name'>{product.p_name}</p>
+                <p className='product-price'>{product.price}</p>
+                <Button className='addtocart-button' 
+                variant='outlined' 
+                size='small'
+                onClick={() => addToCart(product.p_id)}>
+                    Add To Cart
+                </Button>
+            </Paper>
     )
 }
 

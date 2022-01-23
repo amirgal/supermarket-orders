@@ -1,13 +1,18 @@
 import React from 'react';
+import {Fab,Paper} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const CartItem = ({cartItem, removeFromCart}) => {
     
     return (
-        <div className='cart-item-row'>
-            <div>{cartItem.p_name}</div>
-            <div>x {cartItem.qty}</div>
-            <button onClick={() => removeFromCart(cartItem.p_id)}>Remove</button>
-        </div>
+        <Paper className='product-row'>
+            <p>{cartItem.p_name}</p>
+            <p>x {cartItem.qty}</p>
+            <Fab className='delete-button'
+            onClick={() => removeFromCart(cartItem.p_id)}>
+                <DeleteIcon />
+            </Fab>
+        </Paper>
     )
 }
 
