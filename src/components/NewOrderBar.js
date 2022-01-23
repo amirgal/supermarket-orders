@@ -22,12 +22,6 @@ const NewOrderBar = (props) => {
 
     return (
         <div className='new-order-bar'>
-            {/* <input
-                onChange={handleInput}
-                type="text" 
-                placeholder='Enter Clients Email'
-                value={input}
-            /> */}
             <TextField id="email-input" 
                 required 
                 label="Required"

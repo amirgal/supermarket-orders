@@ -1,13 +1,19 @@
 import React from 'react';
+import {Button,Paper} from '@mui/material';
 
 const CartItem = ({cartItem, removeFromCart}) => {
     
     return (
-        <div className='cart-item-row'>
+        <Paper className='product-row'>
             <div>{cartItem.p_name}</div>
             <div>x {cartItem.qty}</div>
-            <button onClick={() => removeFromCart(cartItem.p_id)}>Remove</button>
-        </div>
+            <Button 
+            variant='outlined' 
+            size='small'
+            onClick={() => removeFromCart(cartItem.p_id)}>
+                Remove
+            </Button>
+        </Paper>
     )
 }
 

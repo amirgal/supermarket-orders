@@ -13,7 +13,6 @@ const OrderItem = ({order, deleteOrder, editOrder}) => {
                 onClick={() => editOrder(order.o_id)}>
                     Edit Order
                 </Button>
-                {/* <button className='edit-order-button' onClick={() => editOrder(order.o_id)}>Edit Order</button> */}
             </TableCell>
             <TableCell>
                 <Button className='delete-order-button' 
@@ -21,7 +20,6 @@ const OrderItem = ({order, deleteOrder, editOrder}) => {
                 onClick={() => deleteOrder(order.o_id)}>
                     Delete Order
                 </Button>
-                {/* <button className='delete-order-button' onClick={() => deleteOrder(order.o_id)}>Delete Order</button> */}
             </TableCell>
         </TableRow>
     )
