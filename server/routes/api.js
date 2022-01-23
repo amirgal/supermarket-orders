@@ -66,4 +66,13 @@ router.put('/order', async (req,res) => {
   } 
 })
 
+router.delete('/order/:orderId', async(req,res) => {
+  const orderId = req.params.orderId
+  const query1 = `DELETE FROM orders WHERE o_id = ${orderId}`
+  pool.query(query1)
+  const query2 = `DELETE FROM cart_items WHERE o_id = ${orderId}`
+  pool.query(query2)
+  res.end()
+})
+
 module.exports = router

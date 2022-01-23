@@ -34,6 +34,7 @@ const App = () => {
 
   const deleteOrder =  (orderId) => {
     setOrders(orders.filter(t => t.o_id !== orderId))
+    axios.delete(`http://localhost:4000/order/${orderId}`)
   }
 
   const editOrder = (orderId) => {  
