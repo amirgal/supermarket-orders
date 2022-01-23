@@ -1,5 +1,6 @@
 import React from 'react';
-import {TableCell,TableRow,Button} from '@mui/material';
+import {TableCell,TableRow,Button,IconButton, Fab} from '@mui/material';
+import {Delete as DeleteIcon, Edit as EditIcon} from '@mui/icons-material';
 
 const OrderItem = ({order, deleteOrder, editOrder}) => {
 
@@ -8,18 +9,16 @@ const OrderItem = ({order, deleteOrder, editOrder}) => {
             <TableCell>{order.email}</TableCell>
             <TableCell>{order.total_price}</TableCell>
             <TableCell>
-                <Button className='edit-order-button' 
-                variant='contained' 
+                <Fab className='edit-order-button'
                 onClick={() => editOrder(order.o_id)}>
-                    Edit Order
-                </Button>
+                    <EditIcon />
+                </Fab>
             </TableCell>
             <TableCell>
-                <Button className='delete-order-button' 
-                variant='contained' 
+                <Fab className='delete-button'
                 onClick={() => deleteOrder(order.o_id)}>
-                    Delete Order
-                </Button>
+                    <DeleteIcon />
+                </Fab>
             </TableCell>
         </TableRow>
     )

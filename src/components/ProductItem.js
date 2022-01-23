@@ -5,8 +5,8 @@ const ProductItem = ({product, addToCart}) => {
     
     return (
             <Paper className='product-row'>
-                <div className='product-name'>{product.p_name}</div>
-                <div className='product-price'>{product.price}</div>
+                <p className='product-name'>{product.p_name}</p>
+                <p className='product-price'>{product.price}</p>
                 <Button className='addtocart-button' 
                 variant='outlined' 
                 size='small'

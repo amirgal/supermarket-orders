@@ -7,7 +7,7 @@ const ProductsList = ({products, addToCart}) => {
     return (
         <Paper elevation={3} className='products-block'>
             <h3 className="cart-products-title">Products</h3>
-            <div className='product-row'>
+            <div className='product-row header'>
                 <p>Name</p>
                 <p>Price</p>
             </div>
