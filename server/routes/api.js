@@ -40,13 +40,13 @@ router.post('/order', async (req,res) => {
     const query1 = `INSERT INTO orders VALUES ('${order.o_id}', '${order.email}','${order.total_price}')`
     pool.query(query1)
     order.cart.forEach(p_obj => { 
-      const query1 = `INSERT INTO cart_items VALUES ('${order.o_id}', '${p_obj.product.p_id}','${p_obj.qty}')`
+      const query1 = `INSERT INTO cart_items VALUES ('${order.o_id}', '${p_obj.p_id}','${p_obj.qty}')`
     pool.query(query1)
     res.end()
     });
   } catch (err) {
     console.error(err.message)
   } 
-})
+}) 
 
 module.exports = router
